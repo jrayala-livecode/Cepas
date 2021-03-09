@@ -1,0 +1,34 @@
+<%= form_with(model: @score, local: true) do |form| %>
+  <% if score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(score.errors.count, "error") %> prohibited this score from being saved:</h2>
+
+      <ul>
+      <% score.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :wine %>
+    <% ##wines_array = Wine.all.map { |wine| [wine.name, wine.id.to_i] } %>
+    <%= form.select(:wine, options_for_select(Wine.all.pluck(:name,:id))) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enologist %>
+    <%  ##enologists_array = Enologist.all.map { |enologist| [enologist.name, enologist.id.to_i] } %>
+    <%= form.select(:enologist, options_for_select(Enologist.all.pluck(:name,:id))) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :score %>
+    <%=  form.number_field(:score) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

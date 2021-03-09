@@ -1,0 +1,19 @@
+<%= render 'form', score: @score %>
+
+<table>
+    <thead>
+        <th>Vino</th>
+        <th>Enologo</th>
+        <th>Nota</th>
+    </thead>
+    <tbody>
+        <% @scores.each do |s|%>
+        <tr>
+            <td> <%= s.wine.name %></td>
+            <td> <%= s.enologist.name %> </td>
+            <td> <%= s.score %> </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
